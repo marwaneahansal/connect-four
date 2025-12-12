@@ -21,7 +21,7 @@ function PageContent() {
   const { currentPlayer, winner, scores, resetGame } = useGame();
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-4 flex flex-col items-center justify-center gap-8 max-w-7xl mx-auto">
+    <div className="min-h-screen bg-background p-4 md:p-6 flex flex-col items-center justify-center gap-8 max-w-7xl mx-auto">
       <div className="w-full max-w-4xl flex items-center justify-between">
         <Button variant="outline">Menu</Button>
         <Logo />
