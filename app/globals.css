@@ -123,5 +123,5 @@
 }
 
 .game-card-glow {
-  box-shadow: 0 0 15px -10px oklch(0.645 0.246 16.439 / 0.4);
+  box-shadow: 0 0 10px -10px oklch(0.645 0.246 16.439 / 0.4);
 }
