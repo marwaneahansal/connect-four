@@ -2,12 +2,13 @@
 
 import { PlayerCard } from "@/components/player-card";
 import { Button } from "@/components/ui/button";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { RefreshCw } from "lucide-react";
 import { GameProvider, useGame } from "@/hooks/game-context";
 import { GameBoard } from "@/components/game-board";
 import { Logo } from "@/components/logo";
 import { WinnerAnnouncement } from "@/components/winner-announcement";
+import { useOnboardingStore } from "@/hooks/use-onboarding-store";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
 
 function PageContent() {
   const { currentPlayer, winner, scores, resetGame } = useGame();
+  const { player1, player2 } = useOnboardingStore();
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-6 flex flex-col items-center justify-center gap-8 max-w-7xl mx-auto">
@@ -61,7 +63,9 @@ function PageContent() {
         }}
         className="px-8 py-3 rounded-full text-white font-bold text-lg shadow-lg"
       >
-        {currentPlayer === 1 ? "Player 1's Turn" : "Player 2's Turn"}
+        {currentPlayer === 1
+          ? `${player1 || "Player 1"}'s Turn`
+          : `${player2 || "Player 2"}'s Turn`}
       </motion.div>
     </div>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import { useOnboardingStore } from "@/hooks/use-onboarding-store";
 import { motion } from "motion/react";
 
 interface PlayerCardProps {
@@ -13,6 +14,8 @@ export const PlayerCard = ({ player, score, isActive }: PlayerCardProps) => {
     1: "red",
     2: "yellow",
   };
+
+  const { player1, player2 } = useOnboardingStore();
 
   return (
     <motion.div
@@ -30,7 +33,7 @@ export const PlayerCard = ({ player, score, isActive }: PlayerCardProps) => {
     >
       <div className="flex flex-col space-y-1.5 p-6 items-center pb-2">
         <h3 className="font-semibold leading-none tracking-tight text-xl uppercase">
-          Player {player}
+          {player === 1 ? player1 || "Player 1" : player2 || "Player 2"}
         </h3>
       </div>
       <div className="p-6 flex flex-col items-center gap-4">
