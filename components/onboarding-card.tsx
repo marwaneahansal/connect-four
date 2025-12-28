@@ -10,20 +10,31 @@ import { OnboardingStep2 } from "./onboarding-steps/step-2";
 import { OnboardingStep3 } from "./onboarding-steps/step-3";
 import { useState } from "react";
 import { redirect } from "next/navigation";
+import { useGameStore } from "@/hooks/use-game-store";
 
 export const OnboardingCard = () => {
   const [direction, setDirection] = useState(0);
   const totalSteps = 3;
 
-  const { step, gameMode, player1, player2, canProceed, setStep } =
-    useOnboardingStore();
+  const {
+    step,
+    gameMode,
+    player1,
+    player2,
+    canProceed,
+    setStep,
+    setIsOnboarded,
+  } = useOnboardingStore();
+
+  const { initGame } = useGameStore();
 
   const handleNext = () => {
     if (!canProceed()) return;
 
     if (step === totalSteps) {
-      redirect("/");
-      return;
+      setIsOnboarded(true);
+      initGame();
+      redirect("/game");
     }
 
     setDirection(1);

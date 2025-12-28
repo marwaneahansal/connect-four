@@ -1,6 +1,6 @@
 "use client";
 
-import { useGame } from "@/hooks/game-context";
+import { useGameStore } from "@/hooks/use-game-store";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -13,7 +13,7 @@ export const GameBoard = () => {
     setHoveredCol,
     makeMove,
     findLowestRow,
-  } = useGame();
+  } = useGameStore();
 
   return (
     <div

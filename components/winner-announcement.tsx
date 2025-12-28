@@ -2,11 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useGame } from "@/hooks/game-context";
+import { useGameStore } from "@/hooks/use-game-store";
 import { AnimatePresence, motion } from "motion/react";
 
 export const WinnerAnnouncement = () => {
-  const { resetGame, winner } = useGame();
+  const { resetGame, winner } = useGameStore();
 
   return (
     <AnimatePresence>
